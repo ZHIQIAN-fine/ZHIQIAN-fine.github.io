@@ -33,7 +33,7 @@
 |------|------|
 | [`travel-agent-slides.pptx`](./travel-agent-slides.pptx) | 完整设计说明 |
 | [`travel-agent-code.ipynb`](./travel-agent-code.ipynb) | Agent 实现代码 |
-| `assets/demo_run.png` | 真实游记的运行结果 |
+| [`assets/demo_run.png`](./assets/demo_run.png) | 真实游记的运行结果 |
 
 > 本项目为多人团队的多 Agent 系统协作,我负责其中的旅行笔记提取 Agent:完整的四阶段循环、双层 Agentic RAG、PlaceMapper、人机协作过滤、输出校验器,以及两项负责任 AI 评估测试。
 >
