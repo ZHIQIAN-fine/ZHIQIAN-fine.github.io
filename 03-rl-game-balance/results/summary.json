@@ -1,0 +1,12 @@
+{
+  "n_runs": 1000,
+  "mean_reward": 49.47041,
+  "std_reward": 15.680970504655258,
+  "max_reward": 70.04999999999998,
+  "min_reward": 6.1,
+  "mean_floor": 9.886,
+  "boss_reach_rate": 0.951,
+  "win_rate": 0.561,
+  "mean_turns": 16.5,
+  "mean_cards_per_run": 47.315
+}

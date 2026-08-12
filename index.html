@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>周芷谦 · AI 产品作品集</title>
+<style>
+  :root{
+    --ink:#1a1a1a;
+    --ink-soft:#4a4a46;
+    --paper:#faf8f4;
+    --paper-2:#f2efe8;
+    --line:#e2ddd2;
+    --accent:#9a3b2e;
+    --accent-soft:#c96a4a;
+    --max:1080px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Georgia","Songti SC","Noto Serif SC",serif;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  .sans{font-family:-apple-system,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 32px;}
+
+  /* ---- top bar ---- */
+  header.top{
+    border-bottom:1px solid var(--line);
+    position:sticky;top:0;background:rgba(250,248,244,.9);
+    backdrop-filter:blur(8px);z-index:50;
+  }
+  .top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .brand{font-weight:700;letter-spacing:.02em;font-size:1.05rem;}
+  .brand small{color:var(--accent);font-family:inherit;}
+  nav.sans{display:flex;gap:28px;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);}
+  nav.sans a:hover{color:var(--accent);}
+  @media(max-width:680px){nav.sans{display:none;}}
+
+  /* ---- hero ---- */
+  .hero{padding:96px 0 64px;border-bottom:1px solid var(--line);}
+  .kicker{
+    font-family:-apple-system,sans-serif;font-size:.78rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:22px;
+  }
+  .hero h1{font-size:clamp(2.6rem,6vw,4.4rem);line-height:1.08;font-weight:700;letter-spacing:-.01em;}
+  .hero h1 em{font-style:italic;color:var(--accent);}
+  .hero p.lead{
+    margin-top:28px;max-width:620px;font-size:1.15rem;color:var(--ink-soft);
+  }
+  .hero .meta{margin-top:40px;display:flex;gap:36px;flex-wrap:wrap;font-family:-apple-system,sans-serif;font-size:.85rem;color:var(--ink-soft);}
+  .hero .meta b{display:block;font-size:1.9rem;color:var(--ink);font-family:"Georgia",serif;line-height:1;margin-bottom:6px;}
+
+  /* ---- section title ---- */
+  .sec-head{display:flex;align-items:baseline;gap:18px;margin:72px 0 8px;}
+  .sec-head .no{font-family:-apple-system,sans-serif;font-size:.8rem;letter-spacing:.2em;color:var(--accent);}
+  .sec-head h2{font-size:1.6rem;font-weight:700;}
+  .sec-sub{color:var(--ink-soft);max-width:640px;margin-bottom:36px;}
+
+  /* ---- project ---- */
+  .project{
+    display:grid;grid-template-columns:1fr 1fr;gap:0;
+    border:1px solid var(--line);border-radius:2px;overflow:hidden;
+    margin-bottom:40px;background:#fff;
+  }
+  .project:nth-child(even){grid-template-columns:1fr 1fr;}
+  .project .thumb{
+    background:var(--paper-2);min-height:340px;
+    background-size:cover;background-position:center;
+    order:2;
+  }
+  .project:nth-child(even) .thumb{order:0;}
+  .project .body{padding:44px 40px;display:flex;flex-direction:column;}
+  .p-index{font-family:-apple-system,sans-serif;font-size:.78rem;letter-spacing:.24em;color:var(--accent);margin-bottom:14px;}
+  .project h3{font-size:1.7rem;line-height:1.2;margin-bottom:8px;}
+  .p-onel{color:var(--ink-soft);font-style:italic;margin-bottom:20px;}
+  .p-desc{font-size:.98rem;margin-bottom:22px;}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px;font-family:-apple-system,sans-serif;}
+  .tags span{font-size:.72rem;letter-spacing:.04em;color:var(--ink-soft);border:1px solid var(--line);border-radius:100px;padding:4px 12px;background:var(--paper);}
+  .p-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  .role{font-family:-apple-system,sans-serif;font-size:.78rem;color:var(--ink-soft);}
+  .role b{color:var(--accent);}
+  .btn{
+    font-family:-apple-system,sans-serif;font-size:.82rem;letter-spacing:.04em;
+    border:1px solid var(--ink);padding:9px 20px;border-radius:2px;transition:.18s;
+    white-space:nowrap;
+  }
+  .btn:hover{background:var(--ink);color:var(--paper);}
+  @media(max-width:760px){
+    .project,.project:nth-child(even){grid-template-columns:1fr;}
+    .project .thumb,.project:nth-child(even) .thumb{order:0;min-height:220px;}
+  }
+
+  /* ---- why ---- */
+  .why{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:80px;padding:72px 0;}
+  .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:36px 48px;margin-top:16px;}
+  @media(max-width:680px){.why-grid{grid-template-columns:1fr;}}
+  .why-item h4{font-size:1.15rem;margin-bottom:8px;}
+  .why-item h4 span{color:var(--accent);font-family:-apple-system,sans-serif;font-size:.85rem;margin-right:8px;}
+  .why-item p{color:var(--ink-soft);font-size:.96rem;}
+
+  /* ---- footer ---- */
+  footer{padding:64px 0 80px;}
+  footer h3{font-size:1.3rem;margin-bottom:20px;}
+  .contact{font-family:-apple-system,sans-serif;color:var(--ink-soft);font-size:.95rem;line-height:2.1;}
+  .contact code{background:var(--paper-2);padding:2px 8px;border-radius:3px;font-size:.88rem;}
+  .fine{margin-top:40px;padding-top:24px;border-top:1px solid var(--line);font-family:-apple-system,sans-serif;font-size:.78rem;color:var(--ink-soft);}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand sans">周芷谦 <small>· AI PM</small></div>
+    <nav class="sans">
+      <a href="#work">作品</a>
+      <a href="#why">为什么是这四个</a>
+      <a href="#contact">联系</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="kicker sans">AI Product Portfolio</div>
+    <h1>把技术能力<br>翻译成<em>产品判断</em>。</h1>
+    <p class="lead">我是一名正在向 AI 产品经理方向发展的从业者。这里的每个项目都在回答三个问题:要解决谁的什么问题?我做了什么取舍?这个 AI 方案到底值不值得做?</p>
+    <div class="meta sans">
+      <div><b>04</b>精选项目</div>
+      <div><b>03</b>独立完成</div>
+      <div><b>2</b>类能力覆盖<br>落地 · 判断 · 洞察 · 诚实</div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="no sans">SELECTED WORK</span>
+      <h2>四个项目</h2>
+    </div>
+    <p class="sec-sub">比起模型精度,我更在意能不能把技术翻译成清晰、可行动、非技术读者也能理解的结论。</p>
+
+    <!-- 01 -->
+    <article class="project">
+      <div class="thumb" style="background-image:url('01-travel-agent/assets/cover_architecture.png');"></div>
+      <div class="body">
+        <div class="p-index sans">Project 01 — LLM Agent</div>
+        <h3>旅行笔记提取 Agent</h3>
+        <div class="p-onel">把一篇小红书游记自动变成结构化、可校验的行程单。</div>
+        <p class="p-desc">四阶段 Agent(感知 / 检索 / 行动 / 校验),不是"喂给大模型让它输出"那么简单。地名不乱翻译、调模型前先早退省 token、只在关键处叫人确认、6 条幻觉护栏和提示注入测试都可运行。</p>
+        <div class="tags sans"><span>LLM Agent</span><span>Agentic RAG</span><span>负责任 AI</span><span>Gemini 2.5</span></div>
+        <div class="p-foot">
+          <div class="role sans">角色 · <b>负责核心提取 Agent</b></div>
+          <a class="btn" href="01-travel-agent/">查看详情 →</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 02 -->
+    <article class="project">
+      <div class="thumb" style="background-image:url('02-lora-game-art/assets/cover_luxury_room.png');"></div>
+      <div class="body">
+        <div class="p-index sans">Project 02 — Generative AI</div>
+        <h3>游戏美术 AI 生产管线</h3>
+        <div class="p-onel">为独立游戏训练专属画风 LoRA,并诚实评估它能不能上生产。</div>
+        <p class="p-desc">只用 28 张图训出画风模型,在 ComfyUI 里搭生图 + 局部重绘工作流。做了完整成本核算后我的结论很克制:现在只适合做原型,还不能做成品,而且我能说清差在哪。</p>
+        <div class="tags sans"><span>LoRA / SD1.5</span><span>ComfyUI</span><span>工作流设计</span><span>产品化判断</span></div>
+        <div class="p-foot">
+          <div class="role sans">角色 · <b>独立完成</b></div>
+          <a class="btn" href="02-lora-game-art/">查看详情 →</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 03 -->
+    <article class="project">
+      <div class="thumb" style="background-image:url('03-rl-game-balance/assets/key_card_usage.png');background-color:#fff;background-size:contain;background-repeat:no-repeat;"></div>
+      <div class="body">
+        <div class="p-index sans">Project 03 — Reinforcement Learning</div>
+        <h3>用 RL 智能体审计游戏平衡性</h3>
+        <div class="p-onel">让 AI 自己通关,反过来揪出人工试玩几周都难发现的设计缺陷。</div>
+        <p class="p-desc">MaskablePPO 在单张 T4 上 4.4 分钟收敛,1000 局评估只用 138 秒。它的用卡分布暴露出"两张卡吃掉 76% 出牌、两张几乎是废牌"的失衡,我据此给出了两条可落地的设计改动。</p>
+        <div class="tags sans"><span>MaskablePPO</span><span>Gymnasium</span><span>数据洞察</span><span>含代码 + 模型</span></div>
+        <div class="p-foot">
+          <div class="role sans">角色 · <b>独立完成</b></div>
+          <a class="btn" href="03-rl-game-balance/">查看详情 →</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 04 -->
+    <article class="project">
+      <div class="thumb" style="background-image:url('04-steam-rating/assets/prediction_vs_actual.png');background-color:#fff;background-size:contain;background-repeat:no-repeat;"></div>
+      <div class="body">
+        <div class="p-index sans">Project 04 — Data & Modeling</div>
+        <h3>Steam 游戏口碑预测</h3>
+        <div class="p-onel">一个诚实的负面结论:口碑无法靠价格和元数据预测。</div>
+        <p class="p-desc">2.5 万款游戏、62 维特征,模型最终只能解释 15.5% 的口碑波动,价格与好评率相关性仅 +0.06。我把它放进来,是因为一个说得清原因的负面结论,比一个粉饰过的正面指标更有用。</p>
+        <div class="tags sans"><span>Keras MLP</span><span>特征工程</span><span>TF-IDF + SVD</span><span>结论诚实度</span></div>
+        <div class="p-foot">
+          <div class="role sans">角色 · <b>独立完成</b></div>
+          <a class="btn" href="04-steam-rating/">查看详情 →</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="no sans">SELECTION LOGIC</span>
+      <h2>为什么是这四个</h2>
+    </div>
+    <p class="sec-sub">我没有把所有课程作业都塞进来。作品集的目的是展示判断力,不是罗列工作量。这四个项目各代表 AI PM 需要的一种能力。</p>
+    <div class="why-grid">
+      <div class="why-item">
+        <h4><span class="sans">01</span>定义并落地一个 AI 产品</h4>
+        <p>从模糊需求做到可用的 Agent,涉及提示工程、检索、人机协作、安全护栏。</p>
+      </div>
+      <div class="why-item">
+        <h4><span class="sans">02</span>判断一项技术该不该上线</h4>
+        <p>我的结论是"现在只适合原型"。这种克制比盲目乐观更接近真实的产品决策。</p>
+      </div>
+      <div class="why-item">
+        <h4><span class="sans">03</span>从 AI 行为里挖洞察</h4>
+        <p>把模型当成分析工具而非终点。AI 打 1000 局,替我找出了两处人工难发现的失衡。</p>
+      </div>
+      <div class="why-item">
+        <h4><span class="sans">04</span>敢交付不好看的结论</h4>
+        <p>模型只解释 15.5% 的波动,但"口碑无法靠价格预测"本身就是发现,我不会为指标粉饰它。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="sec-head" style="margin-top:64px;">
+      <span class="no sans">GET IN TOUCH</span>
+      <h2>联系方式</h2>
+    </div>
+    <div class="contact">
+      Email · <code>zhiqian001@e.ntu.edu.sg</code><br>
+      LinkedIn / 简历 · <a href="https://www.linkedin.com/in/zhiqian-zhou-b70533399" style="color:var(--accent);">www.linkedin.com/in/zhiqian-zhou-b70533399</a>
+    </div>
+    <div class="fine">
+      部分项目为团队协作完成,每个项目页均已注明我的具体贡献。所有对外公开的素材均不含隐私或受版权保护的内容。<br>
+      © 2026 周芷谦 · AI Product Portfolio
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
