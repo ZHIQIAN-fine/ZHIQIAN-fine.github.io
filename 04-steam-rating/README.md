@@ -46,6 +46,6 @@
 |------|------|
 | [`steam-rating-code.ipynb`](./steam-rating-code.ipynb) | 完整实现:数据体检、特征工程、建模、评估 |
 | [`steam-rating-report.pdf`](./steam-rating-report.pdf) | 完整报告 |
-| `assets/` | 关键图表 |
+| [`assets/`](./assets) | 关键图表 |
 
 > 本项目为个人独立完成,包括数据清洗、特征工程、建模与结论。数据来自 Kaggle 公开数据集,不含隐私内容。
