@@ -1,0 +1,22 @@
+--- portfolio/03-rl-game-balance/code/cards.py	2026-08-20 10:04:54.679652875 +0000
++++ rl_work/patched/cards.py	2026-08-20 10:08:39.363319075 +0000
+@@ -211,8 +211,8 @@
+     # 巨额伤害 + 强制扣 SAN
+     r["damage_dealt"] = _deal_damage(ctx, 20)
+     p = ctx["player"]
+-    p["san"] -= 3
+-    r["extra"]["madness_san_cost"] = 3
++    p["san"] -= 1
++    r["extra"]["madness_san_cost"] = 1
+     return r
+ 
+ # ---- 14:黑色低语(M7 疯狂 - SAN<=10 才出现)----
+@@ -234,7 +234,7 @@
+     0:  {"name": "生锈匕首",      "cost": 1, "type": "attack", "effect": _rusty_dagger,    "dest": "discard"},
+     1:  {"name": "过载电浆刃",    "cost": 2, "type": "attack", "effect": _plasma_blade,    "dest": "discard"},
+     2:  {"name": "触发链×2",      "cost": 1, "type": "attack", "effect": _trigger_chain,   "dest": "discard"},
+-    3:  {"name": "离子护盾",      "cost": 1, "type": "skill",  "effect": _ion_shield,      "dest": "discard"},
++    3:  {"name": "离子护盾",      "cost": 2, "type": "skill",  "effect": _ion_shield,      "dest": "discard"},
+     4:  {"name": "冥想程序",      "cost": 1, "type": "skill",  "effect": _meditation,      "dest": "discard"},
+     5:  {"name": "404·死灵协议",  "cost": 2, "type": "attack", "effect": _necro_404,       "dest": "discard"},
+     6:  {"name": "进程冻结",      "cost": 1, "type": "skill",  "effect": _process_freeze,  "dest": "discard"},

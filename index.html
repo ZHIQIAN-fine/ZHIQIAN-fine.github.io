@@ -184,8 +184,8 @@
         <div class="p-index sans">Project 03 — Reinforcement Learning</div>
         <h3>用 RL 智能体审计游戏平衡性</h3>
         <div class="p-onel">让 AI 自己通关,反过来揪出人工试玩几周都难发现的设计缺陷。</div>
-        <p class="p-desc">MaskablePPO 在单张 T4 上 4.4 分钟收敛,1000 局评估只用 138 秒。它的用卡分布暴露出"两张卡吃掉 76% 出牌、两张几乎是废牌"的失衡,我据此给出了两条可落地的设计改动。</p>
-        <div class="tags sans"><span>MaskablePPO</span><span>Gymnasium</span><span>数据洞察</span><span>含代码 + 模型</span></div>
+        <p class="p-desc">MaskablePPO 在单张 T4 上 4.4 分钟收敛,1000 局评估只用 138 秒。用卡分布暴露出"两张卡吃掉 76% 出牌"的失衡,而两组对照实验推翻了我自己的第一版结论:加费用无效且让通关率崩到 37%,真正的根因在起手牌组结构——只改牌组构成,头部占比降到 45.6%、通关率反升到 64.7%。</p>
+        <div class="tags sans"><span>MaskablePPO</span><span>Gymnasium</span><span>对照实验</span><span>含代码 + 模型</span></div>
         <div class="p-foot">
           <div class="role sans">角色 · <b>独立完成</b></div>
           <a class="btn" href="03-rl-game-balance/">查看详情 →</a>
