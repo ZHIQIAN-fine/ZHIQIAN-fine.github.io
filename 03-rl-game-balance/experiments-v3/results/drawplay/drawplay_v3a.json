@@ -1,0 +1,142 @@
+{
+  "n_runs": 300,
+  "model": "model_v3a.zip",
+  "code_dir": "code_v3a",
+  "by_card": {
+    "0": {
+      "name": "生锈匕首",
+      "cost": 1,
+      "draws": 15959,
+      "plays": 5315,
+      "draws_per_game": 53.2,
+      "plays_per_game": 17.72,
+      "play_rate_pct": 33.3
+    },
+    "1": {
+      "name": "过载电浆刃",
+      "cost": 2,
+      "draws": 587,
+      "plays": 143,
+      "draws_per_game": 1.96,
+      "plays_per_game": 0.48,
+      "play_rate_pct": 24.36
+    },
+    "2": {
+      "name": "触发链×2",
+      "cost": 1,
+      "draws": 1522,
+      "plays": 334,
+      "draws_per_game": 5.07,
+      "plays_per_game": 1.11,
+      "play_rate_pct": 21.94
+    },
+    "3": {
+      "name": "离子护盾",
+      "cost": 1,
+      "draws": 15444,
+      "plays": 7455,
+      "draws_per_game": 51.48,
+      "plays_per_game": 24.85,
+      "play_rate_pct": 48.27
+    },
+    "4": {
+      "name": "冥想程序",
+      "cost": 1,
+      "draws": 1719,
+      "plays": 664,
+      "draws_per_game": 5.73,
+      "plays_per_game": 2.21,
+      "play_rate_pct": 38.63
+    },
+    "5": {
+      "name": "404·死灵协议",
+      "cost": 2,
+      "draws": 835,
+      "plays": 447,
+      "draws_per_game": 2.78,
+      "plays_per_game": 1.49,
+      "play_rate_pct": 53.53
+    },
+    "6": {
+      "name": "进程冻结",
+      "cost": 1,
+      "draws": 1708,
+      "plays": 828,
+      "draws_per_game": 5.69,
+      "plays_per_game": 2.76,
+      "play_rate_pct": 48.48
+    },
+    "7": {
+      "name": "代码污染",
+      "cost": 1,
+      "draws": 1568,
+      "plays": 618,
+      "draws_per_game": 5.23,
+      "plays_per_game": 2.06,
+      "play_rate_pct": 39.41
+    },
+    "8": {
+      "name": "OVERCLOCK",
+      "cost": 2,
+      "draws": 747,
+      "plays": 356,
+      "draws_per_game": 2.49,
+      "plays_per_game": 1.19,
+      "play_rate_pct": 47.66
+    },
+    "9": {
+      "name": "不该看的日志",
+      "cost": 0,
+      "draws": 203,
+      "plays": 109,
+      "draws_per_game": 0.68,
+      "plays_per_game": 0.36,
+      "play_rate_pct": 53.69
+    },
+    "10": {
+      "name": "拆解",
+      "cost": 0,
+      "draws": 217,
+      "plays": 105,
+      "draws_per_game": 0.72,
+      "plays_per_game": 0.35,
+      "play_rate_pct": 48.39
+    },
+    "11": {
+      "name": "格式化记忆",
+      "cost": 1,
+      "draws": 273,
+      "plays": 117,
+      "draws_per_game": 0.91,
+      "plays_per_game": 0.39,
+      "play_rate_pct": 42.86
+    },
+    "12": {
+      "name": "亵渎协议",
+      "cost": 2,
+      "draws": 215,
+      "plays": 103,
+      "draws_per_game": 0.72,
+      "plays_per_game": 0.34,
+      "play_rate_pct": 47.91
+    },
+    "13": {
+      "name": "无名之吻",
+      "cost": 1,
+      "draws": 46,
+      "plays": 18,
+      "draws_per_game": 0.15,
+      "plays_per_game": 0.06,
+      "play_rate_pct": 39.13
+    },
+    "14": {
+      "name": "黑色低语",
+      "cost": 0,
+      "draws": 102,
+      "plays": 50,
+      "draws_per_game": 0.34,
+      "plays_per_game": 0.17,
+      "play_rate_pct": 49.02
+    }
+  }
+}

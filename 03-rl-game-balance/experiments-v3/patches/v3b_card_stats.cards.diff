@@ -1,0 +1,69 @@
+--- code_v0/cards.py	2026-08-25 13:32:24.467555162 +0000
++++ code_v3b/cards.py	2026-08-25 13:43:13.525770242 +0000
+@@ -120,9 +120,11 @@
+     return r
+ 
+ # ---- 5:404·死灵协议(中等攻击)----
++# v3b 数值修正:9 -> 13 伤。2 费 9 伤 = 4.5/费,严格劣于「2 费打两张匕首 = 12 伤」;
++# 改 13 伤后 6.5/费,略高于基础卡 6.0/费,作为「高费=灵活性差」的补偿。
+ def _necro_404(ctx):
+     r = _empty_result()
+-    r["damage_dealt"] = _deal_damage(ctx, 9)
++    r["damage_dealt"] = _deal_damage(ctx, 13)
+     return r
+ 
+ # ---- 6:进程冻结(虚弱敌人)----
+@@ -134,11 +136,15 @@
+     return r
+ 
+ # ---- 7:代码污染(给敌人加腐蚀)----
++# v3b 数值修正:5 -> 7 伤。读码确认:代码里并没有「敌人腐蚀」的结算逻辑——
++# env._end_turn() 只结算 player["corrosion"](来自敌人 debuff 意图),
++# 敌人侧不存在 corrosion 字段与掉血流程,本卡实现就是一次性 5 点直伤。
++# 既然腐蚀不产生额外伤害,按 1 费 > 6.0/费 的原则直接把伤害提到 7(7.0/费)。
+ def _code_corrupt(ctx):
+     r = _empty_result()
+     e = ctx["enemy"]
+-    # 简化:直接打 5 伤害(代表持续腐蚀)
+-    r["damage_dealt"] = _deal_damage(ctx, 5)
++    # 简化:直接打 7 伤害(代表持续腐蚀)
++    r["damage_dealt"] = _deal_damage(ctx, 7)
+     return r
+ 
+ # ---- 8:OVERCLOCK(自我增益,本回合后续攻击 +3)----
+@@ -196,12 +202,15 @@
+         r["extra"]["formatted_from"] = pool_name
+     return r
+ 
+-# ---- 12:亵渎协议(M5 - 本回合规则惩罚×2,但伤害+8)----
++# ---- 12:亵渎协议(M5 - 本回合规则惩罚×2,但伤害+15)----
++# v3b 数值修正:8 -> 15 伤。2 费 8 伤 = 4.0/费,既严格劣势又自带「规则惩罚×2」副作用;
++# 改 15 伤 = 7.5/费,高于 ID5 的 6.5/费,作为副作用补偿(rule_penalty_multiplier
++# 在 rules.py 里是真实结算的,最多能把 -3 SAN 变成 -6 SAN)。
+ def _profane_protocol(ctx):
+     r = _empty_result()
+     p = ctx["player"]
+     p["rule_penalty_multiplier"] = 2
+-    r["damage_dealt"] = _deal_damage(ctx, 8)
++    r["damage_dealt"] = _deal_damage(ctx, 15)
+     r["extra"]["rule_penalty_x2"] = True
+     return r
+ 
+@@ -239,10 +248,15 @@
+     5:  {"name": "404·死灵协议",  "cost": 2, "type": "attack", "effect": _necro_404,       "dest": "discard"},
+     6:  {"name": "进程冻结",      "cost": 1, "type": "skill",  "effect": _process_freeze,  "dest": "discard"},
+     7:  {"name": "代码污染",      "cost": 1, "type": "attack", "effect": _code_corrupt,    "dest": "discard"},
+-    8:  {"name": "OVERCLOCK",     "cost": 2, "type": "power",  "effect": _overclock,       "dest": "exhaust"},
++    # v3b:OVERCLOCK 费用 2 -> 1(+3 效果不变)。原本 3 费上限只有 6+3=9 伤 < 3 张匕首 18 伤;
++    # 降到 1 费后「OC + 2 匕首 = 18 伤」持平基础线,且与多段/低费攻击组合可超过 6.0/费
++    # (如 OC + 触发链 + 匕首 = (4+3)*2 + 9 = 23 伤)。选择降费而不是把 +3 提到 +5,
++    # 因为 2 费 +5 时「OC + 1 匕首 = 11 伤」仍远低于 18 伤,救不回来。
++    8:  {"name": "OVERCLOCK",     "cost": 1, "type": "power",  "effect": _overclock,       "dest": "exhaust"},
+     9:  {"name": "不该看的日志",  "cost": 0, "type": "skill",  "effect": _forbidden_log,   "dest": "exhaust"},
+     10: {"name": "拆解",          "cost": 0, "type": "attack", "effect": _dismantle,       "dest": "exhaust"},
+-    11: {"name": "格式化记忆",    "cost": 1, "type": "skill",  "effect": _format_memory,   "dest": "exhaust", "loot_only": True},
++    # v3b:格式化记忆 费用 1 -> 0。它战斗内 0 伤 0 甲,价值全在牌组精简,不该占战斗能量。
++    11: {"name": "格式化记忆",    "cost": 0, "type": "skill",  "effect": _format_memory,   "dest": "exhaust", "loot_only": True},
+     12: {"name": "亵渎协议",      "cost": 2, "type": "skill",  "effect": _profane_protocol,"dest": "exhaust", "loot_only": True},
+     13: {"name": "无名之吻",      "cost": 1, "type": "attack", "effect": _nameless_kiss,   "dest": "exhaust", "madness": True},
+     14: {"name": "黑色低语",      "cost": 0, "type": "skill",  "effect": _black_whisper,   "dest": "exhaust", "madness": True},

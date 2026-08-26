@@ -1,0 +1,46 @@
+--- code_v0/cards.py	2026-08-25 13:32:24.467555162 +0000
++++ code_v3a/cards.py	2026-08-25 13:42:41.082109276 +0000
+@@ -259,12 +259,37 @@
+     return [0] * 5 + [3] * 5
+ 
+ 
+-def get_loot_pool():
+-    """战斗胜利后随机掉落的卡(loot only 也包括)"""
+-    return [
+-        cid for cid, c in CARDS.items()
+-        if not c.get("madness", False)        # 疯狂卡不能 loot
+-    ]
++# ---- v3a:掉落池分层 ----
++# 排序依据:「这张卡是否需要成型牌组才敢要」。
++#  - ID 11「格式化记忆」在牌组只有 10 张基础牌时是纯负面(削掉的都是匕首/护盾),
++#    只有牌组被 loot 撑厚、混进废牌之后才是解毒剂,所以必须晚放。
++#  - ID 12「亵渎协议」自带「本回合规则惩罚 ×2」,需要牌组厚度(有稳定输出/防御)
++#    才算得过这笔账,同样放到后段。
++#  - ID 9/10(不该看的日志 / 拆解)有 SAN 代价、随机弃手牌代价,也依赖成型牌组。
++#  - ID 1/5/8 是中高费卡,牌组太薄时抽到会卡能量,放中段。
++# 疯狂卡 13/14 依旧只走 SAN<=10 触发,不进任何掉落档位。
++LOOT_TIERS = (
++    (3,  [0, 3, 2, 4, 6, 7]),                              # floor 1-3
++    (6,  [0, 3, 2, 4, 6, 7, 1, 5, 8]),                     # floor 4-6 = 上一档 + 1,5,8
++    (10, [0, 3, 2, 4, 6, 7, 1, 5, 8, 9, 10, 11, 12]),      # floor 7-10 = 上一档 + 9,10,11,12
++)
++
++
++def get_loot_pool(floor=None):
++    """战斗胜利后随机掉落的卡(loot only 也包括)。
++
++    v3a:按楼层分档放开掉落池(唯一改动)。floor=None 时保持原始行为
++    (返回全部非疯狂卡),以兼容不传楼层的旧调用。
++    """
++    if floor is None:
++        return [
++            cid for cid, c in CARDS.items()
++            if not c.get("madness", False)        # 疯狂卡不能 loot
++        ]
++    for max_floor, pool in LOOT_TIERS:
++        if floor <= max_floor:
++            return list(pool)
++    return list(LOOT_TIERS[-1][1])
+ 
+ 
+ def get_madness_cards():
